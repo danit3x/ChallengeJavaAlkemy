@@ -2,18 +2,16 @@
 package com.danito.services;
 
 import com.danito.domain.MovieModel;
-import com.danito.repository.MovieRepository;
-import java.util.ArrayList;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
 
-@Service
-public class MovieService {
-    @Autowired
-    MovieRepository movieRepository;
+public interface MovieService {
     
-    public ArrayList<MovieModel> obtenerMovies(){
-        return (ArrayList<MovieModel>) movieRepository.findAll();
-    }
+    public List<MovieModel> obtenerMovies();
+    
+    public void guardarMovie(MovieModel movieModel);
+    
+    public void eliminarMovie(MovieModel movieModel);
+    
+    public MovieModel encontrarMovie(MovieModel movieModel);
 }

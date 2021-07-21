@@ -1,14 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.danito.services;
 
-/**
- *
- * @author danito
- */
-public class PersonajeService {
+import com.danito.domain.PersonajeModel;
+import java.util.List;
+
+
+public interface PersonajeService {
+    
+    public List<PersonajeModel> obtenerPersonaje();
+    
+    public void guardarPersonaje(PersonajeModel personajeModel);
+    
+    public void eliminarMovie(PersonajeModel personajeModel);
+    
+    public PersonajeModel encontrarPersonaje(PersonajeModel personajeModel);
     
 }
