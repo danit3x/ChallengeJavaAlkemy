@@ -7,11 +7,12 @@ import java.util.List;
 
 public interface PersonajeService {
     
+        
     public List<PersonajeModel> obtenerPersonaje();
     
-    public void guardarPersonaje(PersonajeModel personajeModel);
+    public PersonajeModel guardarPersonaje(PersonajeModel personajeModel);
     
-    public void eliminarMovie(PersonajeModel personajeModel);
+    public void eliminarPersonaje(PersonajeModel personajeModel);
     
     public PersonajeModel encontrarPersonaje(PersonajeModel personajeModel);
     

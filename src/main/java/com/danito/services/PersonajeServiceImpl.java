@@ -8,6 +8,7 @@ package com.danito.services;
 import com.danito.domain.PersonajeModel;
 import com.danito.repository.PersonajeRepository;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,7 +17,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PersonajeServiceImpl implements PersonajeService{
-
+    
+    @Autowired
     private PersonajeRepository personajeRepository;
     
     @Override
@@ -25,12 +27,13 @@ public class PersonajeServiceImpl implements PersonajeService{
     }
 
     @Override
-    public void guardarPersonaje(PersonajeModel personajeModel) {
-        personajeRepository.save(personajeModel);
+    public PersonajeModel guardarPersonaje(PersonajeModel personajeModel) {
+        return personajeRepository.save(personajeModel);
+        
     }
 
     @Override
-    public void eliminarMovie(PersonajeModel personajeModel) {
+    public void eliminarPersonaje(PersonajeModel personajeModel) {
         personajeRepository.delete(personajeModel);
     }
 

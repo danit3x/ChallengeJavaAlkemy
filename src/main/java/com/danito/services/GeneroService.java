@@ -6,17 +6,12 @@
 package com.danito.services;
 
 import com.danito.domain.GeneroModel;
-import com.danito.repository.GeneroRepository;
-import java.util.ArrayList;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public class GeneroService {
-    @Autowired
-    GeneroRepository generoRepository;
+
+public interface GeneroService {
+
+    public List<GeneroModel> obtenerGeneros();
     
-    public ArrayList<GeneroModel> obtenerGeneros(){
-        return (ArrayList<GeneroModel>) generoRepository.findAll();
-    }
+    public GeneroModel encontrarPorGenero(GeneroModel generoModel);
 }
