@@ -6,12 +6,21 @@
 package com.danito.repository;
 
 import com.danito.domain.MovieModel;
+import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author danito
  */
+@Repository
 public interface MovieRepository extends CrudRepository<MovieModel, Long> {
+    
+    
+    
+    @Transactional(readOnly=true)
+    Optional<MovieModel>findByTitle(String titulo);
     
 }

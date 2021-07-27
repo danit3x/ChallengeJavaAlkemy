@@ -1,6 +1,7 @@
 package com.danito.domain;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,12 +15,23 @@ import lombok.Data;
 public class MovieModel implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)	
-	private Long id;
-	private String imagen;
-	private String title;
+	@Column(name="id")
+        private Long id;
+	
+        @Column(name="imagen")
+        private String imagen;
+	
+        @Column(name="title")
+        private String title;
+        
+        @Column(name="created_at")
 	private Integer createdAt;
+        
+        @Column(name="calificacion")
 	private Integer calificacion;
-	private String PersonajeId;
+	
+        @Column(name="personaje_id")
+        private Integer PersonajeId;
 	
 	
 	

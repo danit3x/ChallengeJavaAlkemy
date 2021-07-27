@@ -7,6 +7,7 @@ package com.danito.services;
 
 import com.danito.domain.PersonajeModel;
 import com.danito.repository.PersonajeRepository;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,12 @@ public class PersonajeServiceImpl implements PersonajeService{
     public List<PersonajeModel> obtenerPersonaje() {
         return (List<PersonajeModel>) personajeRepository.findAll();
     }
-
+    @Override
+    public List<String> mostrarImagenNombre(){
+        return  personajeRepository.buscarImagenNombre();
+    }
+    
+    
     @Override
     public PersonajeModel guardarPersonaje(PersonajeModel personajeModel) {
         return personajeRepository.save(personajeModel);
@@ -42,4 +48,5 @@ public class PersonajeServiceImpl implements PersonajeService{
         return personajeRepository.findById(personajeModel.getId()).orElse(null);
     }
     
+
 }
