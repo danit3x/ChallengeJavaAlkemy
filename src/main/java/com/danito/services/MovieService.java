@@ -13,16 +13,18 @@ public interface MovieService {
     //listado de pelis
     public List<MovieModel> obtenerMovies();
     
+    //Vista previa pelis
     List<MovieDTO> presentarMovies();
     
     //Busqueda Pelis
     public MovieModel encontrarMovie(MovieModel movieModel);
-    
+    //Busqueda por titulo
     MovieDTO findByTitle(String title);
     
     //Guardar pelis
     void guardarMovie(MovieRequest movieModel);
     
+    //Actualizar Pelis
     void updateMovie(MovieRequest movie, Long idMovie);
     
     //eliminar Pelis

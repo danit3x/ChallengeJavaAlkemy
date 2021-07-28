@@ -15,13 +15,13 @@ import lombok.Data;
 public class MovieModel implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)	
-	@Column(name="id")
+	@Column(name="id",unique = true)
         private Long id;
 	
         @Column(name="imagen")
         private String imagen;
 	
-        @Column(name="title")
+        @Column(name="title", nullable = false)
         private String title;
         
         @Column(name="created_at")

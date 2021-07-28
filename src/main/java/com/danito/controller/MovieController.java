@@ -1,10 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.danito.controller;
 
 import com.danito.DTO.MovieRequest;
-import com.danito.domain.MovieModel;
-import com.danito.domain.PersonajeModel;
 import com.danito.services.MovieService;
-import com.danito.services.PersonajeService;
 import com.danito.validator.MovieValidatorImpl;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -21,14 +23,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import utils.excepciones.ApiUnprocessableEntity;
 
+/**
+ *
+ * @author danito
+ */
 
 @RestController
 @Slf4j
 @RequestMapping("/")
-public class ChallengeController {
-
-    @Autowired
-    private PersonajeService personajeService;
+public class MovieController {
+    
     
     @Autowired
     private MovieService movieService;
@@ -36,45 +40,19 @@ public class ChallengeController {
     @Autowired
     private MovieValidatorImpl movieValidator;
     
-    //Listar personajes
-    @GetMapping("/allcharacters")
-    public List inicio(){
-        return personajeService.obtenerPersonaje();
-    }
-    //*****  Falta responder en formato JSON ***********
-    @GetMapping("/characters")
-    public List presentacionCharacters(){
-        return personajeService.mostrarImagenNombre();
-    }
-    //Guardar Personaje
-    @PostMapping("/charactersave")
-    public PersonajeModel guardar(@RequestBody PersonajeModel personajeModel){
-        return this.personajeService.guardarPersonaje(personajeModel);
-    }
-    //Borrar Personaje
-    @GetMapping("/eliminarcharacter")
-    public String eliminar(@RequestParam PersonajeModel personajemodel){
-        personajeService.eliminarPersonaje(personajemodel);
-        return "Borrado";
-    }
-    //Update Personaje
-//    @GetMapping("/characterupdate")
-//    public PersonajeModel modificarPersona
-    
-    //------------------------------
-    //- ---------- Movies ----------
-    
     //Listado todas las propiedades de peli
     @GetMapping(value="/showmovies", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity listadoDeMovies(){
         return ResponseEntity.ok(movieService.obtenerMovies());
     }
     
+    //Vista previa de pelis
     @GetMapping(value="/movies", produces = MediaType.APPLICATION_JSON_VALUE)
     public List presentarLasMovies(){
         return movieService.presentarMovies();
     }
     
+    //Busqueda de peli por titulo
     @GetMapping(value = "/moviesearch{title}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> encontrarPorTitle(@RequestParam("title") String title) {
         return ResponseEntity.ok(this.movieService.findByTitle(title));
@@ -87,6 +65,7 @@ public class ChallengeController {
         return ResponseEntity.ok(Boolean.TRUE);
     }
     
+    //Guardar peli 
     @PostMapping(value="/savemovie", consumes= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> guardarPeli(@RequestBody MovieRequest request) throws ApiUnprocessableEntity{
         
@@ -96,6 +75,7 @@ public class ChallengeController {
         return ResponseEntity.ok(Boolean.TRUE);
     }
     
+    //Actualizar peli
     @PutMapping(value="/updatemovie{idmovie}")
     public ResponseEntity<Object> updateMovie(@RequestBody MovieRequest request, @RequestParam Long idMovie){
         

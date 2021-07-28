@@ -22,9 +22,9 @@ public class PersonajeModel implements Serializable {
     private Long id;
     @Column(name="imagen")
     private String imagen;
-    @Column(name="nombre")
+    @Column(name="nombre", unique= true, nullable = false)
     private String nombre;
-    @Column(name="edad")
+    @Column(name="edad", nullable = false)
     private Integer edad;
     @Column(name="peso")
     private Integer peso;

@@ -16,14 +16,17 @@ import utils.MHelpers;
 
 @Service
 public class MovieServiceImpl implements MovieService{
+    
     @Autowired
     private MovieRepository movieRepository;
+    
     // Listar movies o series
     @Override
     @Transactional(readOnly = true)
     public List<MovieModel> obtenerMovies(){
         return (List<MovieModel>) movieRepository.findAll();
     }
+    
     //Listar vista previa
     @Override
     public List<MovieDTO> presentarMovies() {
@@ -54,6 +57,7 @@ public class MovieServiceImpl implements MovieService{
         this.movieRepository.save(movies);
     }
 
+    //Actualizar peli
     @Override
     public void updateMovie(MovieRequest request, Long  idMovie){
         Optional<MovieModel> movies= this.movieRepository.findById(idMovie);

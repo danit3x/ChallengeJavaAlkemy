@@ -7,21 +7,22 @@ pen the template in the editor.
 package com.danito.repository;
 
 import com.danito.domain.PersonajeModel;
-import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import java.util.Optional;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author danito
  */
 @Repository
-public interface PersonajeRepository extends JpaRepository<PersonajeModel, Long>{
+public interface PersonajeRepository extends CrudRepository<PersonajeModel, Long>{
     
-        
-    @Query(value= "SELECT imagen FROM personaje_model UNION SELECT nombre  FROM personaje_model" , nativeQuery = true)
-    public List<String> buscarImagenNombre();
+    @Transactional(readOnly=true)
+    Iterable<PersonajeModel>findByNombre(String nombre);
+    
+   // Optional<PersonajeModel>findByEdad(Integer edad);
     
     
     
